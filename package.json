@@ -1,8 +1,8 @@
 {
   "name": "nth-day",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Find the nth day (e.g. 3rd Tuesday) in any month",
-  "main": "index.js",
+  "main": "lib/nth-day.js",
   "engines": {
     "node": "4.2.3"
   },

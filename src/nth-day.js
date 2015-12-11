@@ -25,14 +25,29 @@ function dateFromDate(date) {
   throw new Error('Do not know how to handle this type:', typeof date);
 }
 
+function dayFromString(dayOfWeek) {
+  if (typeof dayOfWeek === 'string'){
+    const dow = dayOfWeek.toLowerCase().slice(0, 3);
+    const weekDays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+    const dayNumber = weekDays.indexOf(dow);
+    if (dayNumber === -1) {
+      throw new Error('Do not recognize this day: ', dayOfWeek);
+    }
+    return dayNumber;
+  }
+    return dayOfWeek;
+}
+
 // nth - value from 1 through 5 for the (say) 4th Friday
-// dayOfWeek - 0 through 6 (Sun through Sat)
+// dayOfWeek - 0 through 6 (Sun through Sat) or can be string (i.e 'monday')
 // relevantDate - a date as a string or Date object or moment object
 // Returns a moment date
 export function nthDay(nth, dayOfWeek, relevantDate) {
   relevantDate = dateFromDate(relevantDate);
   const month = relevantDate.month();
   const year = relevantDate.year();
+
+  var dow = dayFromString(dayOfWeek);
 
   let counter = nth - 1;
   let day = counter * 7 + 1;
@@ -41,7 +56,7 @@ export function nthDay(nth, dayOfWeek, relevantDate) {
   date.subtract(1, 'day');
   while(counter !== nth) {
     date.add(1, 'day');
-    if(date.day() === dayOfWeek) {
+    if(date.day() === dow) {
       counter++;
     }
   }

@@ -3,4 +3,3 @@ node_js:
   - "stable"
   - "4.2"
   - "0.12"
-script: make test

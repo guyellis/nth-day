@@ -26,16 +26,34 @@ function dateFromDate(date) {
 }
 
 // nth - value from 1 through 5 for the (say) 4th Friday
+//   Negative numbers count backwards from the end of the month
+//   (For example, the last Friday, or the second to last Sunday)
 // dayOfWeek - 0 through 6 (Sun through Sat)
 // relevantDate - a date as a string or Date object or moment object
 // Returns a moment date
-export function nthDay(nth, dayOfWeek, relevantDate) {
+export function nthDay(nth, dayOfWeek, relevantDate, after) {
   relevantDate = dateFromDate(relevantDate);
   const month = relevantDate.month();
   const year = relevantDate.year();
+  after = after || 0;
+
+  if (nth < 0) {
+    // nth-last day of the month
+    const fourthDay = nthDay(4, dayOfWeek, relevantDate);
+    let occurrences;
+
+    if (fourthDay.add(1, 'week').month() > month) {
+      // It's a month with four of this day of the week
+      occurrences = 4;
+    } else {
+      // It's a month with five of this day of the week
+      occurrences = 5;
+    }
+    return nthDay(occurrences + 1 + nth, dayOfWeek, relevantDate, after);
+  }
 
   let counter = nth - 1;
-  let day = counter * 7 + 1;
+  let day = counter * 7 + 1 + after;
 
   const date = moment([year, month, day]);
   date.subtract(1, 'day');

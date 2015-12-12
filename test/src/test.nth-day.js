@@ -1,7 +1,10 @@
 import * as nd from '../../src/nth-day';
 import assert from 'assert';
 import moment from 'moment';
+import d from 'debug';
 
+const debug = d('nth-day:test');
+const dateFormat = 'YYYY-MM-DD';
 const {nthDay} = nd;
 
 describe('nth-day', () => {
@@ -77,8 +80,42 @@ describe('nth-day', () => {
     assert(actual.isSame(moment([year, month, 6])));
 
     // Error
-    assert.throws(function(){nthDay(5, 'sfgjsldgj', [year, month, 15])}, Error, "Do not recognize this day: ");
+    assert.throws(function(){nthDay(5, 'sfgjsldgj', [year, month, 15]);}, Error, 'Do not recognize this day: ');
   });
 
+  it('should get Election Day', () => {
+    const electionDays = [
+      { year: 2000, day: 7 },
+      { year: 2004, day: 2 },
+      { year: 2008, day: 4 },
+      { year: 2012, day: 6 },
+      { year: 2016, day: 8 },
+      { year: 2020, day: 3 }
+    ];
+
+    electionDays.forEach(election => {
+      // The first Tuesday that's after the first Monday in November
+      const monthDate = '11/1/' + election.year;
+      let actual = nthDay(1, 2, monthDate, nthDay(1, 1, monthDate).date());
+      let expected = moment([election.year, 10, election.day]);
+      debug('election.year:', election.year);
+      assert(actual.isSame(expected), `actual ${actual.format(dateFormat)} expected ${expected.format(dateFormat)}`);
+    });
+  });
+
+  it('should get Arbor Day', () => {
+    const arborDays = [
+      { year: 2013, day: 26 },
+      { year: 2014, day: 25 },
+      { year: 2015, day: 24 },
+      { year: 2016, day: 29 },
+      { year: 2017, day: 28 }
+    ];
+    arborDays.forEach(arborDay => {
+      // The last Friday in April
+      let actual = nthDay(-1, 5, '4/1/' + arborDay.year);
+      assert(actual.isSame(moment([arborDay.year, 3, arborDay.day])));
+    });
+  });
 
 });

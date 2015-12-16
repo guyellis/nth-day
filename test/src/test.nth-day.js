@@ -44,6 +44,42 @@ describe('nth-day', () => {
     assert(actual.isSame(moment([year, month, 31])));
   });
 
+  it('should allow string days of week', () => {
+    const year = 2015;
+    const month = 11;
+
+    // 1st Monday Dec 2015: 12/7/2015
+    let actual = nthDay(1, 'monday', [year, month, 15]);
+    assert(actual.isSame(moment([year, month, 7])));
+
+    // 1st Tuesday Dec 2015: 12/1/2015
+    actual = nthDay(1, 'tues', [year, month, 15]);
+    assert(actual.isSame(moment([year, month, 1])));
+
+    // 1st Wednesday Dec 2015: 12/2/2015
+    actual = nthDay(1, 'wed', [year, month, 15]);
+    assert(actual.isSame(moment([year, month, 2])));
+
+    // 5th Thursday Dec 2015: 12/31/2015
+    actual = nthDay(5, 'thursday', [year, month, 15]);
+    assert(actual.isSame(moment([year, month, 31])));
+
+    // 1st Friday Dec 2015: 12/4/2015
+    actual = nthDay(1, 'fri', [year, month, 15]);
+    assert(actual.isSame(moment([year, month, 4])));
+
+    // 1st Saturday Dec 2015: 12/5/2015
+    actual = nthDay(1, 'sat', [year, month, 15]);
+    assert(actual.isSame(moment([year, month, 5])));
+
+    // 1st Sunday Dec 2015: 12/6/2015
+    actual = nthDay(1, 'sun', [year, month, 15]);
+    assert(actual.isSame(moment([year, month, 6])));
+
+    // Error
+    assert.throws(function(){nthDay(5, 'sfgjsldgj', [year, month, 15]);}, Error, 'Do not recognize this day: ');
+  });
+
   it('should get Election Day', () => {
     const electionDays = [
       { year: 2000, day: 7 },
@@ -53,14 +89,15 @@ describe('nth-day', () => {
       { year: 2016, day: 8 },
       { year: 2020, day: 3 }
     ];
-    
-   electionDays.forEach(election => {
+
+    electionDays.forEach(election => {
       // The first Tuesday that's after the first Monday in November
       const monthDate = '11/1/' + election.year;
       let actual = nthDay(1, 2, monthDate,
                      nthDay(1, 1, monthDate).date()
                    );
       assert(actual.isSame(moment([election.year, 10, election.day])));
+
     });
   });
 
@@ -78,4 +115,5 @@ describe('nth-day', () => {
       assert(actual.isSame(moment([arborDay.year, 3, arborDay.day])));
     });
   });
+
 });

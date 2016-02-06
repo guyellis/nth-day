@@ -1,5 +1,9 @@
 # Changelog nth-day
 
+## 1.1.1
+
+* Update dependencies to address security issue in momentjs
+
 ## 1.1.0
 
 * New: Negative day will count back from end of month (Benjamin Fox)

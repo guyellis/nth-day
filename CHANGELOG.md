@@ -1,5 +1,9 @@
 # Changelog nth-day
 
+## 1.1.2
+
+* Update dependencies
+
 ## 1.1.1
 
 * Update dependencies to address security issue in momentjs

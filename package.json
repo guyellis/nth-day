@@ -4,20 +4,20 @@
     "url": "https://github.com/guyellis/nth-day/issues"
   },
   "dependencies": {
-    "moment": "2.11.2"
+    "moment": "2.14.1"
   },
   "description": "Find the nth day (e.g. 3rd Tuesday) in any month",
   "devDependencies": {
     "babel": "^6.3.26",
     "babel-cli": "^6.4.5",
     "babel-core": "^6.4.5",
-    "babel-eslint": "^4.1.8",
+    "babel-eslint": "^6.1.2",
     "babel-preset-es2015": "^6.1.2",
     "babel-preset-stage-1": "^6.1.2",
-    "eslint": "^1.10.3",
-    "eslint-config-guyellis": "0.0.4",
+    "eslint": "^3.2.2",
+    "eslint-config-guyellis": "0.0.6",
     "istanbul": "^1.0.0-alpha",
-    "mocha": "^2.4.5"
+    "mocha": "^3.0.1"
   },
   "engines": {
     "node": "4.2.3"
@@ -40,10 +40,10 @@
     "build": ". scripts/build.sh",
     "check-coverage": "node_modules/.bin/istanbul check-coverage --statements 0 --branches 0 --functions 0 --lines 0 ./coverage/coverage.json",
     "coverage": "babel-node ./node_modules/istanbul/lib/cli cover node_modules/mocha/bin/_mocha -- test/**/*.js --recursive",
-    "lint": "node_modules/.bin/eslint --ext .js --ext .jsx .",
+    "lint": "node_modules/.bin/eslint --ext .js .",
     "mocha": "babel-node node_modules/mocha/bin/_mocha test/**/*.js --recursive",
     "prepublish": "npm run build",
     "test": "npm run coverage"
   },
-  "version": "1.1.1"
+  "version": "1.1.2"
 }

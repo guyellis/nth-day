@@ -1,5 +1,7 @@
 # nth-day
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/guyellis/nth-day.svg)](https://greenkeeper.io/)
+
 Find the nth day of the month.
 
 e.g. 3rd Tuesday or 2nd Wednesday

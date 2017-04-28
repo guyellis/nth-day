@@ -4,14 +4,14 @@
     "url": "https://github.com/guyellis/nth-day/issues"
   },
   "dependencies": {
-    "moment": "2.14.1"
+    "moment": "2.18.1"
   },
   "description": "Find the nth day (e.g. 3rd Tuesday) in any month",
   "devDependencies": {
     "babel": "^6.3.26",
     "babel-cli": "^6.4.5",
     "babel-core": "^6.4.5",
-    "babel-eslint": "^6.1.2",
+    "babel-eslint": "^7.2.3",
     "babel-preset-es2015": "^6.1.2",
     "babel-preset-stage-1": "^6.1.2",
     "eslint": "^3.2.2",

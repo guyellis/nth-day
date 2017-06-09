@@ -8,7 +8,6 @@
   },
   "description": "Find the nth day (e.g. 3rd Tuesday) in any month",
   "devDependencies": {
-    "babel": "^6.3.26",
     "babel-cli": "^6.4.5",
     "babel-core": "^6.4.5",
     "babel-eslint": "^7.2.3",
@@ -42,8 +41,8 @@
     "coverage": "babel-node ./node_modules/istanbul/lib/cli cover node_modules/mocha/bin/_mocha -- test/**/*.js --recursive",
     "lint": "node_modules/.bin/eslint --ext .js .",
     "mocha": "babel-node node_modules/mocha/bin/_mocha test/**/*.js --recursive",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "npm run coverage"
   },
-  "version": "1.1.2"
+  "version": "1.1.3"
 }

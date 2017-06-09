@@ -1,5 +1,9 @@
 # Changelog nth-day
 
+## 1.1.3
+
+* Updates for Node 8
+
 ## 1.1.2
 
 * Update dependencies

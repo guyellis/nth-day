@@ -12,7 +12,7 @@ e.g. 3rd Tuesday or 2nd Wednesday
 
 ## Usage
 
-```
+```js
 var nd = require('nth-day');
 
 // Param #1: nth, 1 to 5, 1st, 2nd, 3rd etc. (Number)
@@ -35,5 +35,4 @@ var anotherDate = nd.nthDay(2, 2, '12/1/2015',
 var lastSundayInJanuary = nd.nthDay(-1, 0, '1/1/2015')
 
 // Negative indices count backwards from the end of the month
-
 ```

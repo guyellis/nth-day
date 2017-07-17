@@ -34,6 +34,12 @@ function dayFromString(dayOfWeek) {
     }
     return dayNumber;
   }
+  if (typeof dayOfWeek !== 'number') {
+    throw new Error('Expecting dayOfWeek to be a number or string but it was: ', typeof dayOfWeek);
+  }
+  if (dayOfWeek < 0 || dayOfWeek > 6) {
+    throw new Error('Expecting dayOfWeek to be in the range of 0 to 6 but it was ', dayOfWeek);
+  }
   return dayOfWeek;
 }
 

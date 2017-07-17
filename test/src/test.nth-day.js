@@ -111,4 +111,28 @@ describe('nth-day', () => {
       assert(actual.isSame(moment([arborDay.year, 3, arborDay.day])));
     });
   });
+
+  it('show throw if dayOfWeek is not number or string', () => {
+    assert.throws(() => { nthDay(3, {}, [2017, 7, 15]); });
+  });
+
+  it('show throw if dayOfWeek is not in the range 0 to 6', () => {
+    assert.throws(() => { nthDay(3, -1, [2017, 7, 15]); });
+    assert.throws(() => { nthDay(3, 7, [2017, 7, 15]); });
+  });
+
+  it('should throw if relevantDate is not a string or object', () => {
+    assert.throws(() => { nthDay(3, 1, 99); });
+  });
+
+  it('should throw if relevantDate is not a valid date string', () => {
+    assert.throws(() => { nthDay(3, 1, 'i am not a valid date string'); });
+  });
+
+  it('should use the current date as the relevantDate if that parameter is falsey', () => {
+    const thirdMondayCurrentMonth = nthDay(3, 1);
+    const currentMonth = new Date();
+    assert.equal(thirdMondayCurrentMonth.month(), currentMonth.getMonth());
+    assert.equal(thirdMondayCurrentMonth.year(), currentMonth.getFullYear());
+  });
 });

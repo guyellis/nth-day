@@ -37,9 +37,9 @@
   },
   "scripts": {
     "build": ". scripts/build.sh",
-    "check-coverage": "node_modules/.bin/istanbul check-coverage --statements 0 --branches 0 --functions 0 --lines 0 ./coverage/coverage.json",
+    "check-coverage": "istanbul check-coverage --statements 0 --branches 0 --functions 0 --lines 0 ./coverage/coverage.json",
     "coverage": "babel-node ./node_modules/istanbul/lib/cli cover node_modules/mocha/bin/_mocha -- test/**/*.js --recursive",
-    "lint": "node_modules/.bin/eslint --ext .js .",
+    "lint": "eslint --ext .js .",
     "mocha": "babel-node node_modules/mocha/bin/_mocha test/**/*.js --recursive",
     "prepublishOnly": "npm run build",
     "test": "npm run coverage"

@@ -1,5 +1,10 @@
 # Changelog nth-day
 
+## 1.1.4
+
+* Replace `rm -rf` with `rimraf` for cross platform compatibility
+* Fix node engine >= requirement to fix yarn install
+
 ## 1.1.3
 
 * Updates for Node 8

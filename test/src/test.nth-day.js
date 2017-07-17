@@ -1,15 +1,13 @@
-import * as nd from '../../src/nth-day';
 import assert from 'assert';
 import moment from 'moment';
+import * as nd from '../../src/nth-day';
 
-const {nthDay} = nd;
+const { nthDay } = nd;
 
 describe('nth-day', () => {
-
   it('should get the third friday', () => {
-
     // 3rd Fridays for 2016
-    let thirdFridays2016 = [15, 19, 18, 15, 20, 17, 15, 19, 16, 21, 18, 16];
+    const thirdFridays2016 = [15, 19, 18, 15, 20, 17, 15, 19, 16, 21, 18, 16];
     assert.equal(thirdFridays2016.length, 12);
     const year = 2016;
 
@@ -18,7 +16,7 @@ describe('nth-day', () => {
     // are month values for Date objects, the indexes of a 12 element
     // array will be valid month values.
     thirdFridays2016.forEach((day, month) => {
-      let expected = moment([year, month, day]);
+      const expected = moment([year, month, day]);
 
       // Test with date as an array
       let actual = nthDay(3, 5, [year, month, 1]);
@@ -27,7 +25,6 @@ describe('nth-day', () => {
       // Test with date as a string
       actual = nthDay(3, 5, `${month + 1}/1/${year}`);
       assert(actual.isSame(expected));
-
     });
   });
 
@@ -77,7 +74,7 @@ describe('nth-day', () => {
     assert(actual.isSame(moment([year, month, 6])));
 
     // Error
-    assert.throws(function(){nthDay(5, 'sfgjsldgj', [year, month, 15]);}, Error, 'Do not recognize this day: ');
+    assert.throws(() => { nthDay(5, 'sfgjsldgj', [year, month, 15]); }, Error, 'Do not recognize this day: ');
   });
 
   it('should get Election Day', () => {
@@ -87,17 +84,16 @@ describe('nth-day', () => {
       { year: 2008, day: 4 },
       { year: 2012, day: 6 },
       { year: 2016, day: 8 },
-      { year: 2020, day: 3 }
+      { year: 2020, day: 3 },
     ];
 
-    electionDays.forEach(election => {
+    electionDays.forEach((election) => {
       // The first Tuesday that's after the first Monday in November
-      const monthDate = '11/1/' + election.year;
-      let actual = nthDay(1, 2, monthDate,
-                     nthDay(1, 1, monthDate).date()
-                   );
+      const monthDate = `11/1/${election.year}`;
+      const actual = nthDay(1, 2, monthDate,
+        nthDay(1, 1, monthDate).date(),
+      );
       assert(actual.isSame(moment([election.year, 10, election.day])));
-
     });
   });
 
@@ -107,13 +103,12 @@ describe('nth-day', () => {
       { year: 2014, day: 25 },
       { year: 2015, day: 24 },
       { year: 2016, day: 29 },
-      { year: 2017, day: 28 }
+      { year: 2017, day: 28 },
     ];
-    arborDays.forEach(arborDay => {
+    arborDays.forEach((arborDay) => {
       // The last Friday in April
-      let actual = nthDay(-1, 5, '4/1/' + arborDay.year);
+      const actual = nthDay(-1, 5, `4/1/${arborDay.year}`);
       assert(actual.isSame(moment([arborDay.year, 3, arborDay.day])));
     });
   });
-
 });

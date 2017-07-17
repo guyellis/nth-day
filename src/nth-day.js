@@ -1,32 +1,31 @@
 import moment from 'moment';
 
 function dateFromDate(date) {
-  if(!date) {
+  if (!date) {
     return moment();
   }
 
-  if(typeof date === 'string') {
-    let dateObj = new Date(date);
-    if(dateObj.toString() === 'Invalid Date') {
-      console.log('Invalid Date:', date);
+  if (typeof date === 'string') {
+    const dateObj = new Date(date);
+    if (dateObj.toString() === 'Invalid Date') {
+      // console.log('Invalid Date:', date);
       throw date;
     }
     return moment(dateObj);
   }
 
-  if(typeof date === 'object') {
-    if(moment.isMoment(date)) {
+  if (typeof date === 'object') {
+    if (moment.isMoment(date)) {
       return date;
-    } else {
-      return moment(date);
     }
+    return moment(date);
   }
 
   throw new Error('Do not know how to handle this type:', typeof date);
 }
 
 function dayFromString(dayOfWeek) {
-  if (typeof dayOfWeek === 'string'){
+  if (typeof dayOfWeek === 'string') {
     const dow = dayOfWeek.toLowerCase().slice(0, 3);
     const weekDays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
     const dayNumber = weekDays.indexOf(dow);
@@ -44,11 +43,12 @@ function dayFromString(dayOfWeek) {
 // dayOfWeek - 0 through 6 (Sun through Sat) or can be string (e.g. 'monday')
 // relevantDate - a date as a string or Date object or moment object
 // Returns a moment date
-export function nthDay(nth, dayOfWeek, relevantDate, afterDay) {
-  relevantDate = dateFromDate(relevantDate);
+// eslint-disable-next-line import/prefer-default-export
+export function nthDay(nth, dayOfWeek, relevantDateParam, afterDayParam) {
+  const relevantDate = dateFromDate(relevantDateParam);
   const month = relevantDate.month();
   const year = relevantDate.year();
-  afterDay = afterDay || 0;
+  const afterDay = afterDayParam || 0;
 
   if (nth < 0) {
     // nth-last day of the month
@@ -65,17 +65,17 @@ export function nthDay(nth, dayOfWeek, relevantDate, afterDay) {
     return nthDay(occurrences + 1 + nth, dayOfWeek, relevantDate, afterDay);
   }
 
-  var dow = dayFromString(dayOfWeek);
+  const dow = dayFromString(dayOfWeek);
 
   let counter = nth - 1;
-  let day = counter * 7 + 1 + afterDay;
+  const day = (counter * 7) + 1 + afterDay;
 
   const date = moment([year, month, day]);
   date.subtract(1, 'day');
-  while(counter !== nth) {
+  while (counter !== nth) {
     date.add(1, 'day');
-    if(date.day() === dow) {
-      counter++;
+    if (date.day() === dow) {
+      counter += 1;
     }
   }
   return date;

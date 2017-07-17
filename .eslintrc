@@ -1,15 +1,8 @@
 {
-  "ecmaFeatures": {
-    "modules": true
-  },
   "env": {
     "browser": true,
     "mocha": true,
     "node": true
   },
-  "extends": [
-    "guyellis",
-    "guyellis/es6"
-  ],
   "parser": "babel-eslint"
 }

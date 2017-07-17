@@ -1,0 +1,24 @@
+{
+  "lines": 90,
+  "statements": 90,
+  "functions": 99,
+  "branches":75,
+  "exclude": [
+    "lib/**",
+    "node_modules/**",
+    "test/**",
+    ".vscode/**",
+    "scripts/**",
+    "coverage/**"
+  ],
+  "reporter": [
+    "lcov",
+    "text-summary"
+  ],
+  "extension": [
+    ".js"
+  ],
+  "cache": true,
+  "all": true,
+  "check-coverage": true
+}

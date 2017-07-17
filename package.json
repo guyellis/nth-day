@@ -19,8 +19,8 @@
     "eslint-plugin-jsx-a11y": "5.x",
     "eslint-plugin-react": "7.1.0",
     "eslint-plugin-security": "1.4.0",
-    "istanbul": "^1.0.0-alpha",
     "mocha": "^3.0.1",
+    "nyc": "11.0.3",
     "pre-commit": "1.2.2",
     "rimraf": "2.6.1"
   },
@@ -51,8 +51,7 @@
   },
   "scripts": {
     "build": ". scripts/build.sh",
-    "check-coverage": "istanbul check-coverage --statements 0 --branches 0 --functions 0 --lines 0 ./coverage/coverage.json",
-    "coverage": "babel-node ./node_modules/istanbul/lib/cli cover node_modules/mocha/bin/_mocha -- test/**/*.js --recursive",
+    "coverage": "nyc --require babel-register mocha",
     "lint": "eslint --ext .js .",
     "lintfix": "eslint --fix --ext .js .",
     "mocha": "babel-node node_modules/mocha/bin/_mocha test/**/*.js --recursive",

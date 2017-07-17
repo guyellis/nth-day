@@ -19,7 +19,7 @@
     "mocha": "^3.0.1"
   },
   "engines": {
-    "node": "4.2.3"
+    "node": ">=4.2.3"
   },
   "homepage": "https://github.com/guyellis/nth-day#readme",
   "keywords": [

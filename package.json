@@ -54,7 +54,6 @@
     "coverage": "nyc --require babel-register mocha",
     "lint": "eslint --ext .js .",
     "lintfix": "eslint --fix --ext .js .",
-    "mocha": "babel-node node_modules/mocha/bin/_mocha test/**/*.js --recursive",
     "prepublishOnly": "npm run build",
     "test": "npm run coverage"
   },

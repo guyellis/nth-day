@@ -26,7 +26,7 @@
     "rimraf": "2.6.2"
   },
   "engines": {
-    "node": ">=4.2.3"
+    "node": ">=6.0.0"
   },
   "homepage": "https://github.com/guyellis/nth-day#readme",
   "keywords": [
@@ -58,5 +58,5 @@
     "prepublishOnly": "npm run build",
     "test": "npm run coverage"
   },
-  "version": "1.1.4"
+  "version": "2.0.0"
 }

@@ -1,5 +1,13 @@
 # Changelog nth-day
 
+## 2.0.0
+
+### Breaking
+- Remove support for Node 4 & 5
+
+### Non-breaking
+- Updated dependencies
+
 ## 1.1.4
 
 * Replace `rm -rf` with `rimraf` for cross platform compatibility

@@ -90,9 +90,7 @@ describe('nth-day', () => {
     electionDays.forEach((election) => {
       // The first Tuesday that's after the first Monday in November
       const monthDate = `11/1/${election.year}`;
-      const actual = nthDay(1, 2, monthDate,
-        nthDay(1, 1, monthDate).date(),
-      );
+      const actual = nthDay(1, 2, monthDate, nthDay(1, 1, monthDate).date());
       assert(actual.isSame(moment([election.year, 10, election.day])));
     });
   });

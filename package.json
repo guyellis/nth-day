@@ -4,7 +4,7 @@
     "url": "https://github.com/guyellis/nth-day/issues"
   },
   "dependencies": {
-    "moment": "2.19.0"
+    "moment": "2.19.1"
   },
   "description": "Find the nth day (e.g. 3rd Tuesday) in any month",
   "devDependencies": {

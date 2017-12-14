@@ -6,7 +6,7 @@
     "node": true
   },
   "extends": [
-    "airbnb"
+    "airbnb-base"
   ],
   "parser": "babel-eslint",
   "plugins": [

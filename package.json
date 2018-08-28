@@ -18,13 +18,12 @@
     "eslint-config-airbnb-base": "13.0.0",
     "eslint-plugin-import": "2.13.0",
     "eslint-plugin-security": "1.4.0",
-    "mocha": "5.2.0",
-    "nyc": "12.0.2",
+    "jest": "23.5.0",
     "pre-commit": "1.2.2",
     "rimraf": "2.6.2"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.0.0"
   },
   "homepage": "https://github.com/guyellis/nth-day#readme",
   "keywords": [
@@ -50,11 +49,11 @@
   },
   "scripts": {
     "build": ". scripts/build.sh",
-    "coverage": "nyc --require babel-register mocha",
+    "coverage": "jest --coverage",
     "lint": "eslint --ext .js .",
     "lintfix": "eslint --fix --ext .js .",
     "prepublishOnly": "npm run build",
     "test": "npm run coverage"
   },
-  "version": "2.0.0"
+  "version": "3.0.0"
 }

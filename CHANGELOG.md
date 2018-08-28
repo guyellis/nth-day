@@ -1,11 +1,23 @@
 # Changelog nth-day
 
+## 3.0.0
+
+### Breaking
+
+- Remove support for Node 6
+
+### Non-breaking
+
+- Switch tester to Jest
+
 ## 2.0.0
 
 ### Breaking
+
 - Remove support for Node 4 & 5
 
 ### Non-breaking
+
 - Updated dependencies
 
 ## 1.1.4

@@ -127,7 +127,7 @@ describe('nth-day', () => {
     assert.throws(() => { nthDay(3, 1, 'i am not a valid date string'); });
   });
 
-  it('should use the current date as the relevantDate if that parameter is falsey', () => {
+  it('should use the current date as the relevantDate if that parameter is falsy', () => {
     const thirdMondayCurrentMonth = nthDay(3, 1);
     const currentMonth = new Date();
     assert.equal(thirdMondayCurrentMonth.month(), currentMonth.getMonth());
